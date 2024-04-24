@@ -59,12 +59,12 @@
 
     $(".gallery").on("click", ".nav-link", $.fn.mauGallery.methods.filterByTag);
 
-    $(".gallery").on("click", ".mg-prev", () =>
-      $.fn.mauGallery.methods.prevImage(options.lightboxId)
-    );
-    $(".gallery").on("click", ".mg-next", () =>
-      $.fn.mauGallery.methods.nextImage(options.lightboxId)
-    );
+    $(".mg-prev").on("click", () => {
+      $.fn.mauGallery.methods.prevImage(options.lightboxId);
+    });
+    $(".mg-next").on("click", () => {
+      $.fn.mauGallery.methods.nextImage(options.lightboxId);
+    });
   };
   $.fn.mauGallery.methods = {
     createRowWrapper(element) {
@@ -138,17 +138,19 @@
         });
       }
       let index = 0,
-        next = null;
+        prev = null;
 
       $(imagesCollection).each(function (i) {
         if ($(activeImage).attr("src") === $(this).attr("src")) {
           index = i;
         }
       });
-      next =
-        imagesCollection[index] ||
-        imagesCollection[imagesCollection.length - 1];
-      $(".lightboxImage").attr("src", $(next).attr("src"));
+      if (index < imagesCollection.length - 1) {
+        prev = imagesCollection[index + 1];
+      } else {
+        prev = imagesCollection[0]; // Si on atteint la fin, revenir au début
+      }
+      $(".lightboxImage").attr("src", $(prev).attr("src"));
     },
     nextImage() {
       let activeImage = null;
@@ -180,7 +182,12 @@
           index = i;
         }
       });
-      next = imagesCollection[index] || imagesCollection[0];
+
+      if (index < imagesCollection.length - 1) {
+        next = imagesCollection[index + 1];
+      } else {
+        next = imagesCollection[0]; // Si on atteint la fin, revenir au début
+      }
       $(".lightboxImage").attr("src", $(next).attr("src"));
     },
     createLightBox(gallery, lightboxId, navigation) {
@@ -210,9 +217,10 @@
       var tagItems =
         '<li class="nav-item"><span class="nav-link active active-tag"  data-images-toggle="all">Tous</span></li>';
       $.each(tags, function (index, value) {
-        tagItems += `<li class="nav-item active">
-                <span class="nav-link"  data-images-toggle="${value}">${value}</span></li>`;
+        tagItems += `<li class="nav-item active active active-tag">
+                <span class="nav-link "  data-images-toggle="${value}">${value}</span></li>`;
       });
+
       var tagsRow = `<ul class="my-4 tags-bar nav nav-pills">${tagItems}</ul>`;
 
       if (position === "bottom") {

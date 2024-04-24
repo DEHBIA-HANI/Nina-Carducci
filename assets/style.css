@@ -99,14 +99,17 @@ body {
 .gallery .nav {
   justify-content: center;
 }
+.gallery li {
+  cursor: pointer;
+}
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #beb45a;
   border-radius: 0;
 }
-. {
-  color: #fff;
+.nav-link.active-tag {
+  color: #fff !important;
   background-color: #beb45a;
   border-radius: 0;
 }
