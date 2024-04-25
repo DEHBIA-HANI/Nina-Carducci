@@ -59,10 +59,10 @@
 
     $(".gallery").on("click", ".nav-link", $.fn.mauGallery.methods.filterByTag);
 
-    $(".mg-prev").on("click", () => {
+    $(".gallery").on("click", ".mg-prev", () => {
       $.fn.mauGallery.methods.prevImage(options.lightboxId);
     });
-    $(".mg-next").on("click", () => {
+    $(".gallery").on("click", ".mg-next", () => {
       $.fn.mauGallery.methods.nextImage(options.lightboxId);
     });
   };
@@ -182,7 +182,6 @@
           index = i;
         }
       });
-
       if (index < imagesCollection.length - 1) {
         next = imagesCollection[index + 1];
       } else {
