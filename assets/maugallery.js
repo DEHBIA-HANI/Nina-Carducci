@@ -148,7 +148,7 @@
       if (index < imagesCollection.length - 1) {
         prev = imagesCollection[index + 1];
       } else {
-        prev = imagesCollection[0]; // Si on atteint la fin, revenir au début
+        prev = imagesCollection[0];
       }
       $(".lightboxImage").attr("src", $(prev).attr("src"));
     },
@@ -182,10 +182,11 @@
           index = i;
         }
       });
+    
       if (index < imagesCollection.length - 1) {
         next = imagesCollection[index + 1];
       } else {
-        next = imagesCollection[0]; // Si on atteint la fin, revenir au début
+        next = imagesCollection[0];
       }
       $(".lightboxImage").attr("src", $(next).attr("src"));
     },
