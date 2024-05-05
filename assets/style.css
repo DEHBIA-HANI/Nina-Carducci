@@ -86,10 +86,6 @@ body {
   width: 80%;
   font-size: 14px;
 }
-
-#gallery {
-  /* min-height: 100vh; */
-}
 .title {
   text-align: center;
   padding-block: 2em;
@@ -366,11 +362,3 @@ input[type="submit"] {
     width: 80%;
   }
 }
-.row{
---bs-gutter-x: 1.5rem;
---bs-gutter-y: 0;
-display: flex;
-flex-wrap: wrap;
-margin-top: calc(-1* var(--bs-gutter-y));
-margin-right: calc(-0.5* var(--bs-gutter-x));
-margin-left: calc(-0.5* var(--bs-gutter-x));}
